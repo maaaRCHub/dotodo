@@ -99,6 +99,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingEnd="20dp"
                     android:text="Mark as done"
                     android:textColor="@color/dimcolor"
                     android:textSize="16sp" />
@@ -112,6 +113,7 @@
                     android:id="@+id/priorityTextView"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/rounded_corners"
                     android:paddingHorizontal="10dp"

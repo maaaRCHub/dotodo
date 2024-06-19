@@ -92,7 +92,6 @@
                 android:paddingBottom="8dp"
                 android:paddingHorizontal="2dp"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/open_sans"
                 android:hint="Title"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -105,7 +104,6 @@
                 android:paddingTop="6dp"
                 android:paddingBottom="25dp"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/open_sans"
                 android:gravity="top"
                 android:hint="Description"
                 android:inputType="textMultiLine" />
@@ -138,7 +136,6 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/open_sans"
                         android:text="Start"
                         android:textSize="18sp"
 
@@ -197,7 +194,6 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/open_sans"
                         android:text="End"
                         android:textSize="18sp"
 
@@ -261,7 +257,6 @@
                         <TextView
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/open_sans"
                             android:text="Repeat"
                             android:textSize="18sp" />
 
@@ -287,7 +282,6 @@
                         <TextView
                             android:layout_width="85dp"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/open_sans"
                             android:text="Priority"
                             android:textSize="18sp" />
 

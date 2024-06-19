@@ -2,9 +2,12 @@ package com.bluecrimson.todo;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
@@ -68,16 +71,17 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
 
+
         initializeViews();
         dbHelper = new DBHelper(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Set layout manager.
         taskList = dbHelper.getAllTasks();
-        toggleEmptyLayout();
         taskAdapter = new TaskAdapter(this, taskList, this, dbHelper);
         recyclerView.setAdapter(taskAdapter);
 
         sortTasksByUpcoming();
+        toggleEmptyLayout();
 
         // Open AddActivity.
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -240,6 +244,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------
 
+    // NOT IN USE:
 //    private void showSortDialog() {
 //        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 //        builder.setTitle("Sort by:")
@@ -274,12 +279,13 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
     private void toggleMainMenu() {
         if (mainMenuLayout.getVisibility() == View.VISIBLE) {
             mainMenuLayout.setVisibility(View.GONE);
-            deleteMenuLayout.setVisibility(View.VISIBLE);
             addButton.setVisibility(View.GONE);
+            deleteMenuLayout.setVisibility(View.VISIBLE);
+            countSelectedTextView.setText("0");
         } else {
             mainMenuLayout.setVisibility(View.VISIBLE);
-            deleteMenuLayout.setVisibility(View.GONE);
             addButton.setVisibility(View.VISIBLE);
+            deleteMenuLayout.setVisibility(View.GONE);
         }
     }
 
@@ -603,7 +609,6 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
 //        builder.show();
 
         // Open AddActivity with selected task data
-
         Intent intent = new Intent(MainActivity.this, AddActivity.class);
         intent.putExtra("id", selectedTask.getId());
         intent.putExtra("title", selectedTask.getTitle());
@@ -665,7 +670,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
 
 // --------------------------------------------------------------------------------------------------------------------------------------
 
-    // Show undo snackbar with 1 minute delay
+    // Show undo snackbar with 30 seconds delay
 
     private void showUndoSnackbar(Task task) {
         Handler handler = new Handler();
@@ -674,8 +679,8 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
                 dbHelper.deleteTask(task.getId());
             }
         };
-        handler.postDelayed(runnable, 60000);
-        Toast.makeText(this, "You have 1 minute to undo this action", Toast.LENGTH_LONG).show();
+        handler.postDelayed(runnable, 25000);
+        Toast.makeText(this, "You have 30 seconds to undo this action", Toast.LENGTH_LONG).show();
         deleteTaskWithUndo(task);
     }
 
@@ -703,7 +708,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
                 }
             }
         });
-        snackbar.setDuration(60000); // 1 minute
+        snackbar.setDuration(25000); // 1 minute
         snackbar.show();
     }
 
