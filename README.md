@@ -1,7 +1,7 @@
 
-## ToDo - Android Application Overview
+## DoTodo - Android Application Overview
 
-The ToDo app is an intuitive and efficient task management application designed to help users organize and prioritize their daily activities. Whether you need to manage personal tasks, work assignments, or any other kind of to-do items, this app provides a simple yet powerful interface to keep track of everything.
+The DoTodo app is an intuitive and efficient task management application designed to help users organize and prioritize their daily activities. Whether you need to manage personal tasks, work assignments, or any other kind of to-do items, this app provides a simple yet powerful interface to keep track of everything.
 
 
 ### Features:
