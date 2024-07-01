@@ -241,6 +241,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
             int selectedCount = taskAdapter.getSelectedCount();
             if (selectedCount > 0) {
                 showDeleteConfirmationDialog();
+                taskList = dbHelper.getAllTasks();
             } else {
                 Toast.makeText(this, "No tasks selected to delete", Toast.LENGTH_SHORT).show();
             }
@@ -416,6 +417,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
 
     // Sort tasks by upcoming date and time
     private void sortTasksByUpcoming() {
+        taskList = dbHelper.getAllTasks();
         if (taskList.isEmpty()) {
             return;
         }
@@ -462,6 +464,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
 
     // Sort tasks by priority
     private void sortTasksByPriority() {
+        taskList = dbHelper.getAllTasks();
         if (taskList.isEmpty()) {
             return;
         }
@@ -503,6 +506,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
 
     // Sort tasks by created on date
     private void sortTasksByCreatedOn() {
+        taskList = dbHelper.getAllTasks();
         if (taskList.isEmpty()) {
             return;
         }
