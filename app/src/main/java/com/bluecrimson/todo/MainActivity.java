@@ -193,6 +193,12 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         deleteButton.setOnClickListener(v -> {
             Animation clickAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_click_animation);
             deleteButton.startAnimation(clickAnimation);
+            if(taskAdapter.getSelectedCount() == taskAdapter.getItemCount()){
+                selectAllButton.setImageResource(R.drawable.baseline_deselect_24);
+            } else {
+                selectAllButton.setImageResource(R.drawable.round_select_all_24);
+            }
+
             optionsLayout.setVisibility(View.GONE);
             sortLayout.setVisibility(View.GONE);
             toggleMainMenu();
@@ -588,13 +594,18 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
             if(taskAdapter.getSelectedCount() == 0){
                 toggleMainMenu();
                 taskAdapter.notifyItemChanged(position);
-                runOnUiThread(()-> {
+                runOnUiThread(()-> {    // Update the UI on the main thread
                     taskAdapter.notifyItemChanged(position);
                 });
             }
 
             int count = taskAdapter.getSelectedCount();
             countSelectedTextView.setText(String.valueOf(count));
+            if(taskAdapter.getSelectedCount() == taskAdapter.getItemCount()){
+                selectAllButton.setImageResource(R.drawable.baseline_deselect_24);
+            } else {
+                selectAllButton.setImageResource(R.drawable.round_select_all_24);
+            }
             return;
         }
 
@@ -647,6 +658,11 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.OnTas
         taskAdapter.notifyItemChanged(position);
         int count = taskAdapter.getSelectedCount();
         countSelectedTextView.setText(String.valueOf(count));
+        if(taskAdapter.getSelectedCount() == taskAdapter.getItemCount()){
+            selectAllButton.setImageResource(R.drawable.baseline_deselect_24);
+        } else {
+            selectAllButton.setImageResource(R.drawable.round_select_all_24);
+        }
         updateDeleteMenu();
     }
 
